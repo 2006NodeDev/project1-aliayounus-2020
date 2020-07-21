@@ -1,4 +1,4 @@
-import { project1Client } from "."
+import { project1Client } from ".";
 
 
 export const GetUserById = async (userId:number) =>{
