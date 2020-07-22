@@ -2,14 +2,14 @@ import React, { FunctionComponent } from 'react';
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import {Link} from 'react-router-dom'
-import { LoginComponent } from '../LoginComponent/LoginComponent';
+//import { LoginComponent } from '../LoginComponent/LoginComponent';
 
 //this is an example of Jss - a more js way of doing css
 const useStyles = makeStyles((theme: Theme) =>
@@ -46,21 +46,19 @@ export const NavBarComponent: FunctionComponent<any> = (props) => {
     if(props.user){
         //if they are logged in, add the other items
       
-        <MenuItem onClick={handleClose}><Link to={`/profile/${(props.user)?props.user.userId : '0' }`}>My Profile</Link></MenuItem>)
+        <MenuItem onClick={handleClose}><Link to={`/profile/${(props.user)?props.user.userId : '0' }`}>My Profile</Link></MenuItem>
     }
     if(props.user && props.user.role === 'Admin'){
         menuItems.push(<MenuItem onClick={handleClose}><Link to='/users'>All Users</Link></MenuItem>,)
-  
     }
-     { if(props.user && props.user.role === 'Admin'){
-         menuItems.push(<MenuItem onClick={handleClose}><Link to='/users'> Edit User </Link></MenuItem>,)}
-     }
+
+    //  { if(props.user && props.user.role === 'Admin'){
+    //      menuItems.push(<MenuItem onClick={handleClose}><Link to='/users'> Edit User </Link></MenuItem>,)}
+    //  }
 
     // if (props.user && props.user.role.role === 'admin'){
     //     menuItems.push([<MenuItem onClick={handleClose}> <Link to= {`/MyProfile/${(props.user)?props.user.userId : '0' }`} > My Profile </Link> </MenuItem>,
     //     <MenuItem onClick={handleClose}> <Link to='/EditMyProfile' > Edit My Profile </Link> </MenuItem>,
-
-
 
     return (
         <nav>
@@ -79,7 +77,7 @@ export const NavBarComponent: FunctionComponent<any> = (props) => {
                         {menuItems}
                     </Menu>
                     <Typography variant="h2" className={classes.title}>
-                        Welcome to UserBook
+                        Welcome to Userbook
                 </Typography>
                 </Toolbar>
             </AppBar>
