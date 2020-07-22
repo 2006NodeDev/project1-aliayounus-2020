@@ -16,13 +16,13 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       flexWrap: 'wrap',
       '& > *': {
-        margin: theme.spacing(1),
-        width: theme.spacing(20),
+        margin: theme.spacing(5),
+        width: theme.spacing(25),
         height: theme.spacing(17),
       },
     },
     paper:{
-        backgroundColor:'grey' 
+        backgroundColor:'aqua' 
     }
   }),
 );
