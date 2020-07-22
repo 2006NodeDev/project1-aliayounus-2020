@@ -9,6 +9,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import {Link} from 'react-router-dom'
+import { LoginComponent } from '../LoginComponent/LoginComponent';
 
 //this is an example of Jss - a more js way of doing css
 const useStyles = makeStyles((theme: Theme) =>
@@ -37,20 +38,28 @@ export const NavBarComponent: FunctionComponent<any> = (props) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
     //we can programmatically build the menu items
     let menuItems = []
     //always have the login item
     menuItems.push(<MenuItem onClick={handleClose}><Link to='/login'>Login</Link></MenuItem>)
     if(props.user){
         //if they are logged in, add the other items
-        menuItems.push(<MenuItem onClick={handleClose}><Link to='/clicker'>Clicker</Link></MenuItem>,
-        <MenuItem onClick={handleClose}><Link to='/first'>First</Link></MenuItem>,
-        <MenuItem onClick={handleClose}><Link to='/title'>Title</Link></MenuItem>,
+      
         <MenuItem onClick={handleClose}><Link to={`/profile/${(props.user)?props.user.userId : '0' }`}>My Profile</Link></MenuItem>)
     }
     if(props.user && props.user.role === 'Admin'){
         menuItems.push(<MenuItem onClick={handleClose}><Link to='/users'>All Users</Link></MenuItem>,)
+  
     }
+     { if(props.user && props.user.role === 'Admin'){
+         menuItems.push(<MenuItem onClick={handleClose}><Link to='/users'> Edit User </Link></MenuItem>,)}
+     }
+
+    // if (props.user && props.user.role.role === 'admin'){
+    //     menuItems.push([<MenuItem onClick={handleClose}> <Link to= {`/MyProfile/${(props.user)?props.user.userId : '0' }`} > My Profile </Link> </MenuItem>,
+    //     <MenuItem onClick={handleClose}> <Link to='/EditMyProfile' > Edit My Profile </Link> </MenuItem>,
+
 
 
     return (
@@ -69,12 +78,13 @@ export const NavBarComponent: FunctionComponent<any> = (props) => {
                         onClose={handleClose}>
                         {menuItems}
                     </Menu>
-                    <Typography variant="h6" className={classes.title}>
-                        project1
+                    <Typography variant="h2" className={classes.title}>
+                        Welcome to UserBook
                 </Typography>
-                    <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
         </nav>
+        
     )
 }
+

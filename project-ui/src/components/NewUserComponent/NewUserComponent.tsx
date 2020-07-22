@@ -32,7 +32,6 @@ export const NewUserComponent: FunctionComponent<any> = (props) => {
 
     const updateImage = (e:any) => {
         let file:File = e.currentTarget.files[0]// the tag contains an array of files, we want the first and only
-        //blast to the past and utiliza an old school FileReader
         let reader = new FileReader()
         //we start an async function on the reader object
         reader.readAsDataURL(file)

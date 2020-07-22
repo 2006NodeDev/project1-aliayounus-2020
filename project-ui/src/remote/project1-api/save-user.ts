@@ -4,7 +4,7 @@ import { User } from "../../models/User";
 export const project1SaveUser = async (newUser:User) => {
     
     try{
-        let response = await project1Client.post('/users', newUser)
+        let response = await project1Client.patch('/users', newUser)
         console.log(response);
         return response.data//should be the user object
     } catch(e){
